@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>iCalendar</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="iCalendar">
+    <meta name="keywords" content="iCalendar">
+    <meta name="author" content="Mathieu Gilmour">
+    <!-- Load jquery, bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <!-- Custom CSS End -->
+</head>
+<body style="overflow-y: scroll">
+    <h3 id="header">iCalendar</h3>
+    <hr>
+    <p id="title"><b>Database Access</b></p>
+    <div id="db">
+        <div id="userLogin">
+            Username: <span id="asterix">*</span><br>
+            <input type="text" id="user" name="user:" size="50px">
+            <br>
+            Password: <span id="asterix">*</span><br>
+            <input type="text" id="password" name="password:" size="50px">
+            <br>
+            Database(same as username): <span id="asterix">*</span><br>
+            <input type="text" id="database" name="database:" size="50px">
+            <br><br>
+            <div id="login">
+                <input type="button" id="loginBtn" name="login" value="login">
+            </div>
+        </div>
+        <br>
+        <div id="query">
+            <div id="dbmenu">
+                <input type="button" id="clearBtn" name="clear" value="Clear Tables">
+                <span>
+                    <input type="button" id="queryBtn" name="query" value="Display Queries">
+                    <input type="button" id="logoutBtn" name="logout" value="Logout">
+                </span>
+            </div>
+        </div>
+        <br>
+        <div id="queryList">  
+            <select id='queryChoice'>
+                <option id="eventStartDate">Events By Start Date</option>
+                <option id="eventDateAndSum">Start Date and Summary of an Event</option>
+            </select>
+            <span>
+                <select id="calList">
+                    <input type="button" id="confirmQuery" name="confirm" value="Confirm">
+                </select>
+            </span>
+        </div>
+    </div>
+    <hr>
+    <p id="title"><b>Status Box</b></p>
+    <div id="statusBox">
+        <label id="status">No Current Status...</label>
+    </div>
+    <br>
+    <div style="text-align: center;">
+        <input type="button" id='clear' value='Clear'>
+    </div>
+    <hr>
+    <p id="title"><b>File Log</b></p>
+    <div style="overflow-y: scroll; overflow-x: scroll; height: 250px;">
+        <table id="fileLog" style="width:100%">
+            <!--File Log Table-->
+        </table>
+    </div> 
+    <br>
+    <form action="/upload" method="post">
+        <input type="file" id="filechooser" name="filechooser"/>
+        <!--Upload file button-->
+    </form>
+    <hr>
+    <p id="title"><b>Calendar View</b></p>
+    <select id='dropDown'>
+        <!--Dropdown box for ics files-->
+    </select>
+    <div style="background-color: white; overflow-y: scroll; overflow-x: scroll; height: 250px;">
+        <table id="calView" style="width:100%">
+            <!--Calendar View Table-->
+        </table>
+    </div>
+    <hr>
+    <p style="font-family: Verdana">Choose an Event to Display its Alarms:</p>
+    <div>
+        <input type="text" id="eventText" name="Event #:" value="Please select a valid event number..." size="50px">
+        <input type="button" id="alarmButton" value="Display Alarms" name="EventButton">
+    </div>
+    <br>
+    <p style="font-family: Verdana">Choose an Event to Display its Properties:</p>
+    <div>
+        <input type="text" id="propText" name="Event #:" value="Please select a valid event number..." size="50px">
+        <input type="button" id="propButton" value="Display Properties" name="EventButton">
+    </div>
+    <hr>
+    <div id="createObject">
+        <input type="button" id="eventButton" value="Add Event" name="createEvnt">
+        <input type="button" id="calButton" value="Add Calendar" name="createCalendar">
+    </div>
+    <div id="close">
+        <input type="button" id="closeButton" value="Close" height="10px" width="10px">
+    </div>
+    <div id="createEv">
+        <form>
+            <div id="closeFix">
+                <p id="eventTitle"><b>Create Event</b></p>
+            </div>
+            <div>
+                Select a start time: <span id="asterix">*</span><br>
+                <input type="time" id="timeText" name="time:">
+            </div>
+            <br>
+            <div>
+                Select a start date: <span id="asterix">*</span><br>
+                <input type="date" id="dateText" name="date:">
+            </div>
+            <div id="rightAlign">
+                Create Event:
+                <input type="button" id="submitButton" value="Now" name="createEvnt">
+            </div>
+            <div>
+                Select uid: <span id="asterix">*</span><br>
+                <input type="text" id="uid" name="uid:" size="50px">
+            </div>
+            <br>
+            <div>
+                Write a summary: <br>
+                <input type="text" id="summary" name="summary:" size="50px">
+            </div>
+        </form>
+    </div>
+    <div id="closeCal">
+        <input type="button" id="closeBtn" value="Close" height="10px" width="10px">
+    </div>
+    <div id="createCal">
+        <form>
+            <div id="closeFix">
+                <p id="eventTitle"><b>Create Calendar</b></p>
+            </div>
+            <div>
+                Create a file name (Must include .ics extension): <span id="asterix">*</span><br>
+                <input type="text" id="userFile" name="userFile:" size="50px">
+            </div>
+            <br>
+            <div>
+                Select a version: <span id="asterix">*</span><br>
+                <input type="text" id="version" name="version:" size="50px">
+            </div>
+            <br>
+            <div>
+                Select a prodID: <span id="asterix">*</span><br>
+                <input type="text" id="prodID" name="prodID:" size="50px">
+            </div>
+            <div id="submitCal">
+                Create Calendar:
+                <input type="button" id="submitBtn" value="Now" name="createEvnt">
+            </div>
+            <br>
+            <div id="closeFix">
+                <p id="eventTitle"><b>Create Event for Calendar</b></p>
+            </div>
+            <div>
+                Select a start time: <span id="asterix">*</span><br>
+                <input type="time" id="timeTextCal" name="time:">
+            </div>
+            <br>
+            <div>
+                Select a start date: <span id="asterix">*</span><br>
+                <input type="date" id="dateTextCal" name="date:">
+            </div>
+            <br>
+            <div>
+                Select uid: <span id="asterix">*</span><br>
+                <input type="text" id="uidCal" name="uid:" size="50px">
+            </div>
+            <br>
+            <div>
+                Write a summary: <br>
+                <input type="text" id="summaryCal" name="summary:" size="50px">
+            </div>
+        </form>
+    </div>
+    <br><br><br>
+    <!-- Leave me at the bottom of body -->
+    <script src="/index.js"></script>
+</body>
+</html>

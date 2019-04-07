@@ -1,0 +1,149 @@
+html {
+    width: 60%;
+    height: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    font-size: 16px;
+    background-color: rgba(0, 255, 255, 0.301);
+}
+body {
+    height: 100%;
+    min-height: 100%;
+    line-height: 1.75;
+    background-color: rgba(0, 255, 255, 0.048);
+}
+h3#header {
+    text-align: center;
+}
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+}
+#logoutBtn{
+    position: relative;
+    margin-left: 40px;
+}
+#db{
+    margin-left: 180px;
+    position: relative;
+}
+#login {
+    position: relative;
+    padding-right: 200px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+#fileLog {
+    background-color: #FFFFFF;
+}
+#calView {
+    background-color: #FFFFFF;
+}
+tr#tags{
+    background-color: #F0F0F0;
+}
+div#data1 {
+    font-family: arial;
+}
+div#statusBox {
+    border: 1px solid black;
+    background-color: rgb(12,232,232);
+    outline-width: 10px;
+    height: 200px;
+    text-align: center;
+    overflow: auto;
+}
+label#status {
+    font-family: verdana;
+}
+p#title {
+    text-align: center;
+    font-family: verdana;
+}
+input#eventText {
+    color: gray;
+}
+input#propText {
+    color: gray;
+}
+#createEv {
+    border: 5px solid black;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: rgb(12,232,232);
+}
+#createCal {
+    border: 5px solid black;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: rgb(12,232,232);
+}
+#rightAlign {
+    text-align: right;
+    padding-right: 100px;
+}
+#close {
+    text-align: right;
+    padding-right: 10px;
+}
+#closeCal {
+    text-align: right;
+    padding-right: 10px;
+}
+#submitCal {
+    text-align: center;
+}
+#asterix {
+    color: red;
+}
+a:link:hover {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    text-decoration: underline;
+    cursor: pointer;
+    cursor: hand;
+}
+input[type=submit], button {
+    cursor: pointer;
+    cursor: hand;
+}
+#eventTitle {
+    text-align: center;
+    font-family: verdana;
+}
+#queryBtn{
+    position: relative;
+    margin-left: 40px;
+}
+#confirmQuery{
+    margin-left: 30px;
+}
+@media(max-width: 900px) {
+    html {
+        font-size: 14px !important;
+        width: 80% !important;
+    }
+    #db{
+        margin-left: 120px;
+    }
+    #login{
+        padding-right: 102px;
+    }
+    #logoutBtn{
+    }
+}
+@media(max-width: 480px) {
+    html {
+        font-size: 12px !important;
+        width: 90% !important;
+    }
+}
+@media(max-width: 320px) {
+    html {
+        font-size: 12px !important;
+        width: 100% !important;
+    }
+}
